@@ -1,2 +1,11 @@
-@import '../node_modules/prismjs/themes/prism-tomorrow';
-@import './assets/scss/app.scss';
+@import "../node_modules/prismjs/themes/prism-tomorrow";
+
+@font-face {
+  font-family: IranSanse;
+  src: url(../public/Font/IRANSans.ttf);
+}
+
+body {
+  background-color: #f5f5f4;
+  font-family: IranSanse;
+}
