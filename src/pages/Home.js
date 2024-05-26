@@ -5,51 +5,41 @@ import {
   CardTitle,
   CardText,
   CardLink,
+  Row,
+  Col,
 } from "reactstrap";
+import { useContext } from "react";
+import CardCongratulations from "../@core/components/Card Congratulations/CardCongratulations";
+import StatsVertical from "../@core/components/Stats Vertical/StatsVertical";
+import { User, FileText, File } from "react-feather";
+import SupportTracker from "../@core/components/Support Tracker/SupportTracker.js";
+import SupportTracker2 from "../@core/components/Support Tracker/SupportTracker2.js";
+import { ThemeColors } from '@src/utility/context/ThemeColors';
 
 const Home = () => {
+  const { colors } = useContext(ThemeColors)
   return (
     <div>
-      <Card>
-        <CardHeader>
-          <CardTitle>Kick start your project 🚀</CardTitle>
-        </CardHeader>
-        <CardBody>
-          <CardText>All the best for your new project.</CardText>
-          <CardText>
-            Please make sure to read our{" "}
-            <CardLink
-              href="https://pixinvent.com/demo/vuexy-react-admin-dashboard-template/documentation/"
-              target="_blank"
-            >
-              Template Documentation
-            </CardLink>{" "}
-            to understand where to go from here and how to use our template.
-          </CardText>
-        </CardBody>
-      </Card>
+      <Row>
+        <Col lg='6' sm='12'>
+          <CardCongratulations />
+        </Col>
+        <Col xl='3' md='4' sm='6'>
+          <StatsVertical icon={<User />} stats={26} statTitle={"تعداد تمام کاربرها"}/>
+        </Col>
+        <Col xl='3' md='4' sm='6'>
+          <StatsVertical icon={<File />} stats={1} statTitle={"تعداد تمام دوره های رزرو شده"}/>
+        </Col>
+      </Row>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Want to integrate JWT? 🔒</CardTitle>
-        </CardHeader>
-        <CardBody>
-          <CardText>
-            We carefully crafted JWT flow so you can implement JWT with ease and
-            with minimum efforts.
-          </CardText>
-          <CardText>
-            Please read our{" "}
-            <CardLink
-              href="https://pixinvent.com/demo/vuexy-react-admin-dashboard-template/documentation/docs/development/auth"
-              target="_blank"
-            >
-              JWT Documentation
-            </CardLink>{" "}
-            to get more out of JWT authentication.
-          </CardText>
-        </CardBody>
-      </Card>
+      <Row>
+        <Col lg='6' xs='12'>
+          <SupportTracker primary={colors.primary.main} danger={colors.danger.main} />
+        </Col>
+        <Col lg='6' xs='12'>
+          <SupportTracker2 primary={colors.primary.main} danger={colors.danger.main} />
+        </Col>
+      </Row>
     </div>
   );
 };
