@@ -1,6 +1,6 @@
 import { BubbleController } from "chart.js";
 import { Bubble } from "react-chartjs-2";
-import { Mail, Home, Airplay, Circle, User, Menu, List } from "react-feather";
+import { Mail, Home, Airplay, Circle, User, Menu, List, BookOpen, Coffee, Edit } from "react-feather";
 
 export default [
   {
@@ -18,11 +18,35 @@ export default [
   },
 
   {
-    id: "Courses",
+    id: "courses",
     title: "دوره ها",
     icon: <List size={20} />,
-    navLink: "/Courses",
-    children: [],
+    navLink: "/courses",
+    children: [{
+      id: "coursesList",
+      title: "لیست دوره ها",
+      icon: <BookOpen size={12} />,
+      navLink: "/courses/coursesList",
+    },
+    {
+      id: "yourCoursesList",
+      title: "لیست دوره های شما",
+      icon: <List size={12} />,
+      navLink: "/courses/yourCoursesList",
+    },
+    {
+      id: "reservedCourses",
+      title: "دوره های رزرو شده کاربران",
+      icon: <Coffee size={12} />,
+      navLink: "/courses/reservedCourses",
+    },
+    {
+      id: "addNewCourse",
+      title: "ساخت دوره جدید",
+      icon: <Edit size={12} />,
+      navLink: "/courses/addNewCourse",
+    },
+  ],
   },
 
   {
@@ -30,21 +54,24 @@ export default [
     title: "اخبار",
     icon: <List size={20} />,
     navLink: "/news",
-    children: [],
+    children: [{
+      id: "newsList",
+      title: "لیست اخبار",
+      icon: <List size={12} />,
+      navLink: "/news/newsList",
+    },
+    {
+      id: "addNews",
+      title: "ایجاد خبر جدید",
+      icon: <List size={12} />,
+      navLink: "/news/addNews",
+    },
+    {
+      id: "newsGroup",
+      title: "لیست دسته بندی",
+      icon: <List size={12} />,
+      navLink: "/news/newsGroup",
+    },
+  ],
   },
-
-  /*  {
-    id: "smaplePage",
-    title: "Sample Page",
-    icon: <Airplay size={20} />,
-    // navLink: "/sample",
-    children: [
-      {
-        id: "invoiceList",
-        title: "List",
-        icon: <Circle size={12} />,
-        navLink: "/apps/invoice/list",
-      },
-    ],
-  }, */
 ];

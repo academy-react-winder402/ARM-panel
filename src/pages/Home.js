@@ -31,7 +31,6 @@ const Home = () => {
           <StatsVertical icon={<File />} stats={1} statTitle={"تعداد تمام دوره های رزرو شده"}/>
         </Col>
       </Row>
-
       <Row>
         <Col lg='6' xs='12'>
           <SupportTracker primary={colors.primary.main} danger={colors.danger.main} />
