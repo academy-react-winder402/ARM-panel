@@ -4,73 +4,49 @@ import { Mail, Home, Airplay, Circle, User, Menu, List, BookOpen, Coffee, Edit }
 
 export default [
   {
-    id: "home",
+    id: "Home",
     title: "داشبورد",
     icon: <Home size={20} />,
-    navLink: "/home",
+    navLink: "/Home",
   },
 
   {
-    id: "users",
+    id: "Users",
     title: "کاربران",
     icon: <User size={20} />,
-    navLink: "/users",
+    navLink: "/Users",
   },
 
   {
-    id: "courses",
+    id: "Courses",
     title: "دوره ها",
     icon: <List size={20} />,
-    navLink: "/courses",
-    children: [{
-      id: "coursesList",
-      title: "لیست دوره ها",
-      icon: <BookOpen size={12} />,
-      navLink: "/courses/coursesList",
-    },
-    {
-      id: "yourCoursesList",
-      title: "لیست دوره های شما",
-      icon: <List size={12} />,
-      navLink: "/courses/yourCoursesList",
-    },
-    {
-      id: "reservedCourses",
-      title: "دوره های رزرو شده کاربران",
-      icon: <Coffee size={12} />,
-      navLink: "/courses/reservedCourses",
-    },
-    {
-      id: "addNewCourse",
-      title: "ساخت دوره جدید",
-      icon: <Edit size={12} />,
-      navLink: "/courses/addNewCourse",
-    },
-  ],
+    navLink: "/Courses",
+    children: [],
   },
 
   {
-    id: "news",
+    id: "News",
     title: "اخبار",
     icon: <List size={20} />,
-    navLink: "/news",
+    navLink: "/News",
     children: [{
-      id: "newsList",
+      id: "NewsList",
       title: "لیست اخبار",
       icon: <List size={12} />,
-      navLink: "/news/newsList",
+      navLink: "/News/NewsList",
     },
     {
-      id: "addNews",
+      id: "AddNews",
       title: "ایجاد خبر جدید",
       icon: <List size={12} />,
-      navLink: "/news/addNews",
+      navLink: "/AddNews",
     },
     {
-      id: "newsGroup",
+      id: "NewsGroup",
       title: "لیست دسته بندی",
       icon: <List size={12} />,
-      navLink: "/news/newsGroup",
+      navLink: "/News/NewsGroup",
     },
   ],
   },
