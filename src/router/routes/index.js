@@ -12,6 +12,7 @@ import PublicRoute from "@components/routes/PublicRoute";
 
 // ** Utils
 import { isObjEmpty } from "@utils";
+import YourList from "../../pages/course/YourList";
 
 const getLayout = {
   blank: <BlankLayout />,
@@ -26,6 +27,10 @@ const TemplateTitle = "%s - Vuexy React Admin Template";
 const DefaultRoute = "/home";
 
 const Home = lazy(() => import("../../pages/Home"));
+const Yourlist = lazy(() => import("../../pages/course/YourList"));
+const ListOfCourse = lazy(() => import("../../pages/course/ListOfCourse"));
+const BuildCourse = lazy(() => import("../../pages/course/BuildCourse"));
+const ReserveList = lazy(() => import("../../pages/course/ReserveList"));
 const Login = lazy(() => import("../../pages/Login"));
 const Register = lazy(() => import("../../pages/Register"));
 const ForgotPassword = lazy(() => import("../../pages/ForgotPassword"));
@@ -41,6 +46,22 @@ const Routes = [
   {
     path: "/home",
     element: <Home />,
+  },
+  {
+    path: "/yourlist",
+    element: <Yourlist />,
+  },
+  {
+    path: "/listOfCourse",
+    element: <ListOfCourse />,
+  },
+  {
+    path: "/buildCourse",
+    element: <BuildCourse />,
+  },
+  {
+    path: "/reserveList",
+    element: <ReserveList />,
   },
   {
     path: "/login",
