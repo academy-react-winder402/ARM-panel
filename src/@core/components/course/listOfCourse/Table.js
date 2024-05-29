@@ -12,7 +12,7 @@ import TableWithButtons from "./TableWithButtons";
 // ** Styles
 import "@styles/react/libs/tables/react-dataTable-component.scss";
 
-const Tables = () => {
+const Table = () => {
   return (
     <Fragment>
       <Row>
@@ -24,4 +24,4 @@ const Tables = () => {
   );
 };
 
-export default Tables;
+export default Table;

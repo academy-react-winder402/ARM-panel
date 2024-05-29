@@ -185,10 +185,6 @@ const DataTableWithButtons = () => {
           <CardTitle tag="h4">DataTable with Buttons</CardTitle>
           <div className="d-flex mt-md-0 mt-1">
             <UncontrolledButtonDropdown>
-              <DropdownToggle color="secondary" caret outline>
-                <Share size={15} />
-                <span className="align-middle ms-50">Export</span>
-              </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem className="w-100">
                   <Printer size={15} />
@@ -217,7 +213,7 @@ const DataTableWithButtons = () => {
             </UncontrolledButtonDropdown>
             <Button className="ms-2" color="primary" onClick={handleModal}>
               <Plus size={15} />
-              <span className="align-middle ms-50">Add Record</span>
+              <span className="align-middle ms-50">ساخت دوره جدید</span>
             </Button>
           </div>
         </CardHeader>

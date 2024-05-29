@@ -2,13 +2,13 @@ import { Breadcrumb } from "reactstrap";
 import Breadcrumbs from "../../@core/components/course/listOfCourse/Breadcrumbs";
 import { Fragment } from "react";
 import UsersList from "../../@core/components/course/listOfCourse/UsersList";
-import Tables from "../../@core/components/course/listOfCourse/Tables";
+import Table from "../../@core/components/course/listOfCourse/Table";
 const YourList = () => {
   return (
     <Fragment>
       <Breadcrumbs title="لیست دوره ها" />
       <UsersList />
-      <Tables />
+      <Table />
     </Fragment>
   );
 };
