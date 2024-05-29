@@ -5,7 +5,7 @@ import { Fragment, useState, forwardRef } from "react";
 import { data, columns } from "./data";
 
 // ** Add New Modal Component
-// import AddNewModal from "./AddNewModal";
+import AddNewModal from "./AddNewModal";
 
 // ** Third Party Components
 import ReactPaginate from "react-paginate";

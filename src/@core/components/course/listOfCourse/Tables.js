@@ -15,10 +15,6 @@ import "@styles/react/libs/tables/react-dataTable-component.scss";
 const Tables = () => {
   return (
     <Fragment>
-      <Breadcrumbs
-        title="Datatables Basic"
-        data={[{ title: "Datatables" }, { title: "Datatables Basic" }]}
-      />
       <Row>
         <Col sm="12">
           <TableWithButtons />
