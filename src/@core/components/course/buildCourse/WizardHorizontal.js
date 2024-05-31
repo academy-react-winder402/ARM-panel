@@ -8,7 +8,7 @@ import Wizard from "@components/wizard";
 import Address from "./steps-with-validation/Address";
 import SocialLinks from "./steps-with-validation/SocialLinks";
 import PersonalInfo from "./steps-with-validation/PersonalInfo";
-import AccountDetails from "./steps-with-validation/AccountDetails";
+import FileUploder from "./steps-with-validation/FileUploder";
 
 const WizardHorizontal = () => {
   // ** Ref
@@ -19,35 +19,35 @@ const WizardHorizontal = () => {
 
   const steps = [
     {
-      id: "account-details",
+      id: "course-picture",
       title: "اضافه کردن عکس دوره",
       subtitle: "تصویر دوره را وارد کنید",
-      content: <AccountDetails stepper={stepper} />,
+      content: <FileUploder stepper={stepper} />,
     },
     {
-      id: "personal-info",
-      title: "Personal Info",
-      subtitle: "Add Personal Info",
+      id: "course-info",
+      title: "اطلاعات دوره",
+      subtitle: "اضافه کردن اطلاعات",
       content: <PersonalInfo stepper={stepper} />,
     },
     {
-      id: "step-address",
-      title: "Address",
-      subtitle: "Add Address",
+      id: "course-property",
+      title: "ویژگی های دوره",
+      subtitle: "ویژگی ها را وارد کنید",
       content: <Address stepper={stepper} />,
     },
     {
-      id: "social-links",
-      title: "Social Links",
-      subtitle: "Add Social Links",
+      id: "course-detail",
+      title: "توضیحات دوره",
+      subtitle: "توضیحات را وارد کنید",
       content: <SocialLinks stepper={stepper} />,
     },
-    {
-      id: "social-links",
-      title: "Social Links",
-      subtitle: "Add Social Links",
-      content: <SocialLinks stepper={stepper} />,
-    },
+    // {
+    //   id: "course-tec",
+    //   title: "تکنولوژی های دوره",
+    //   subtitle: "تکنولوژی ها را وارد کنید",
+    //   content: <SocialLinks stepper={stepper} />,
+    // },
   ];
 
   return (

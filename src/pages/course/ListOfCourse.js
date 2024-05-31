@@ -8,7 +8,7 @@ const YourList = () => {
     <Fragment>
       <Breadcrumbs title="لیست دوره ها" />
       <UsersList />
-      <Table />
+      {/* <Table /> */}
     </Fragment>
   );
 };
