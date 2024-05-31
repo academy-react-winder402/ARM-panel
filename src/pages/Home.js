@@ -39,7 +39,6 @@ const Home = () => {
           />
         </Col>
       </Row>
-
       <Row>
         <Col lg="6" xs="12">
           <SupportTracker

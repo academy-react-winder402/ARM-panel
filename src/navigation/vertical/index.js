@@ -1,5 +1,6 @@
 import { BubbleController } from "chart.js";
 import { Bubble } from "react-chartjs-2";
+
 import {
   Mail,
   Home,
@@ -13,18 +14,21 @@ import {
   Edit,
 } from "react-feather";
 
+import { Mail, Home, Airplay, Circle, User, Menu, List, BookOpen, Coffee, Edit } from "react-feather";
+
+
 export default [
   {
-    id: "home",
+    id: "Home",
     title: "داشبورد",
     icon: <Home size={20} />,
-    navLink: "/home",
+    navLink: "/Home",
   },
   {
-    id: "users",
+    id: "Users",
     title: "کاربران",
     icon: <User size={20} />,
-    navLink: "/users",
+    navLink: "/Users",
   },
 
   {
@@ -61,25 +65,28 @@ export default [
   },
 
   {
-    id: "news",
+    id: "News",
     title: "اخبار",
     icon: <List size={20} />,
-    navLink: "/news",
-    children: [],
+    navLink: "/News",
+    children: [{
+      id: "NewsList",
+      title: "لیست اخبار",
+      icon: <List size={12} />,
+      navLink: "/News/NewsList",
+    },
+    {
+      id: "AddNews",
+      title: "ایجاد خبر جدید",
+      icon: <List size={12} />,
+      navLink: "/AddNews",
+    },
+    {
+      id: "NewsGroup",
+      title: "لیست دسته بندی",
+      icon: <List size={12} />,
+      navLink: "/News/NewsGroup",
+    },
+  ],
   },
-
-  /*  {
-    id: "smaplePage",
-    title: "Sample Page",
-    icon: <Airplay size={20} />,
-    // navLink: "/sample",
-    children: [
-      {
-        id: "invoiceList",
-        title: "List",
-        icon: <Circle size={12} />,
-        navLink: "/apps/invoice/list",
-      },
-    ],
-  }, */
 ];
