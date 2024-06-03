@@ -36,6 +36,7 @@ const Register = lazy(() => import("../../pages/Register"));
 const ForgotPassword = lazy(() => import("../../pages/ForgotPassword"));
 const Error = lazy(() => import("../../pages/Error"));
 const AddNews = lazy(() => import("../../pages/News/AddNews"));
+const NewsList = lazy(() => import("../../pages/News/NewsList"));
 // ** Merge Routes
 const Routes = [
   {
@@ -48,6 +49,10 @@ const Routes = [
   {
     path: "/AddNews",
     element: <AddNews />
+  },
+  {
+    path: "/NewsList",
+    element: <NewsList />
   },
   {
     path: "/home",
