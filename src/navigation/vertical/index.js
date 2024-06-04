@@ -14,9 +14,6 @@ import {
   Edit,
 } from "react-feather";
 
-import { Mail, Home, Airplay, Circle, User, Menu, List, BookOpen, Coffee, Edit } from "react-feather";
-
-
 export default [
   {
     id: "Home",
@@ -69,24 +66,25 @@ export default [
     title: "اخبار",
     icon: <List size={20} />,
     navLink: "/News",
-    children: [{
-      id: "NewsList",
-      title: "لیست اخبار",
-      icon: <List size={12} />,
-      navLink: "/News/NewsList",
-    },
-    {
-      id: "AddNews",
-      title: "ایجاد خبر جدید",
-      icon: <List size={12} />,
-      navLink: "/AddNews",
-    },
-    {
-      id: "NewsGroup",
-      title: "لیست دسته بندی",
-      icon: <List size={12} />,
-      navLink: "/News/NewsGroup",
-    },
-  ],
+    children: [
+      {
+        id: "NewsList",
+        title: "لیست اخبار",
+        icon: <List size={12} />,
+        navLink: "/News/NewsList",
+      },
+      {
+        id: "AddNews",
+        title: "ایجاد خبر جدید",
+        icon: <List size={12} />,
+        navLink: "/AddNews",
+      },
+      {
+        id: "NewsGroup",
+        title: "لیست دسته بندی",
+        icon: <List size={12} />,
+        navLink: "/News/NewsGroup",
+      },
+    ],
   },
 ];
