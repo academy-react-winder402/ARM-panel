@@ -56,7 +56,7 @@ const BreadCrumbs = (props) => {
             ) : (
               ""
             )}
-            <div className="breadcrumb-wrapper vs-breadcrumbs d-sm-block d-none col-12">
+            <div className="breadcrumb-wrapper vs-breadcrumbs d-sm-block d-none col-12" style={{color:"rgb(115, 103, 240)"}}>
               <Breadcrumb>
                 <BreadcrumbItem tag="li">
                   <Link to="/">داشبورد</Link>
