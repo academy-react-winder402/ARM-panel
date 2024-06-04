@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom'
 import Avatar from '@components/avatar'
 
 // ** Store & Actions
-import { store } from '@store/store'
-import { deleteInvoice } from './store'
+// import { store } from '@store/store'
+// import { deleteInvoice } from './store'
 
 // ** Reactstrap Imports
 import {

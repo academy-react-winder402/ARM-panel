@@ -13,6 +13,7 @@ import PublicRoute from "@components/routes/PublicRoute";
 // ** Utils
 import { isObjEmpty } from "@utils";
 import YourList from "../../pages/course/YourList";
+import { elements } from "chart.js";
 
 const getLayout = {
   blank: <BlankLayout />,
@@ -37,6 +38,7 @@ const ForgotPassword = lazy(() => import("../../pages/ForgotPassword"));
 const Error = lazy(() => import("../../pages/Error"));
 const AddNews = lazy(() => import("../../pages/News/AddNews"));
 const NewsList = lazy(() => import("../../pages/News/NewsList"));
+const MembersList = lazy(() => import("../../pages/Members/MembersList"));
 // ** Merge Routes
 const Routes = [
   {
@@ -45,6 +47,11 @@ const Routes = [
     element: <Navigate replace to={DefaultRoute} />,
   },
 
+  // members
+  {
+    path: "/Members",
+    element: <MembersList />
+  },
   // News
   {
     path: "/AddNews",

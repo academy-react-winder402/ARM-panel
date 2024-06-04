@@ -22,10 +22,10 @@ export default [
     navLink: "/Home",
   },
   {
-    id: "Users",
+    id: "Members",
     title: "کاربران",
     icon: <User size={20} />,
-    navLink: "/Users",
+    navLink: "/Members",
   },
 
   {
@@ -83,7 +83,7 @@ export default [
         id: "NewsGroup",
         title: "لیست دسته بندی",
         icon: <List size={12} />,
-        navLink: "/News/NewsGroup",
+        navLink: "/NewsGroup",
       },
     ],
   },
