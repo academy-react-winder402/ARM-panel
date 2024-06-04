@@ -1,6 +1,4 @@
 import { useState, Fragment } from "react";
-
-// ** Reactstrap Imports
 import {
   Row,
   Col,
@@ -15,22 +13,10 @@ import {
   ModalBody,
   ModalHeader,
 } from "reactstrap";
-
-// ** Third Party Components
-import Swal from "sweetalert2";
-import Select from "react-select";
 import { Check, Briefcase, X } from "react-feather";
 import { useForm, Controller } from "react-hook-form";
-import withReactContent from "sweetalert2-react-content";
-
-// ** Custom Components
-import Avatar from "@components/avatar";
-
-// ** Utils
+import Select from "react-select";
 import { selectThemeColors } from "@utils";
-
-// ** Styles
-// import '@styles/react/libs/react-select/_react-select.scss'
 
 const roleColors = {
   editor: "light-info",
@@ -39,19 +25,23 @@ const roleColors = {
   maintainer: "light-success",
   subscriber: "light-primary",
 };
-
 const statusColors = {
   active: "light-success",
   pending: "light-warning",
   inactive: "light-secondary",
 };
-
 const statusOptions = [
   { value: "active", label: "Active" },
   { value: "inactive", label: "Inactive" },
   { value: "suspended", label: "Suspended" },
 ];
-
+const languageOptions = [
+  { value: "english", label: "English" },
+  { value: "spanish", label: "Spanish" },
+  { value: "french", label: "French" },
+  { value: "german", label: "German" },
+  { value: "dutch", label: "Dutch" },
+];
 const countryOptions = [
   { value: "uk", label: "UK" },
   { value: "usa", label: "USA" },
@@ -60,125 +50,59 @@ const countryOptions = [
   { value: "canada", label: "Canada" },
 ];
 
-const languageOptions = [
-  { value: "english", label: "English" },
-  { value: "spanish", label: "Spanish" },
-  { value: "french", label: "French" },
-  { value: "german", label: "German" },
-  { value: "dutch", label: "Dutch" },
-];
-
-const MySwal = withReactContent(Swal);
-
 const UserInfoCard = ({ data }) => {
-  // ** State
   const [show, setShow] = useState(false);
 
-  // ** Hook
-  const {
-    reset,
-    control,
-    setError,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    defaultValues: {
-      username: data.username,
-      lastName: data.fullName.split(" ")[1],
-      firstName: data.fullName.split(" ")[0],
-    },
-  });
+  let reset, control, setError, handleSubmit;
 
-  // ** render user img
-  const renderUserImg = () => {
-    if (data !== null && data.avatar.length) {
-      return (
-        <img
-          height="110"
-          width="110"
-          alt="user-avatar"
-          src={data.avatar}
-          className="img-fluid rounded mt-3 mb-2"
-        />
-      );
+  const onSubmit = (data) => {
+    if (Object.values(data).every((field) => field.length > 0)) {
+      setShow(false);
     } else {
-      return (
-        <Avatar
-          initials
-          color={data.avatarColor || "light-primary"}
-          className="rounded mt-3 mb-2"
-          content={data.fullName}
-          contentStyles={{
-            borderRadius: 0,
-            fontSize: "calc(48px)",
-            width: "100%",
-            height: "100%",
-          }}
-          style={{
-            height: "110px",
-            width: "110px",
-          }}
-        />
-      );
+      for (const key in data) {
+        if (data[key].length === 0) {
+          setError(key, {
+            type: "manual",
+          });
+        }
+      }
     }
   };
 
-  // const onSubmit = (data) => {
-  //   if (Object.values(data).every((field) => field.length > 0)) {
-  //     setShow(false);
-  //   } else {
-  //     for (const key in data) {
-  //       if (data[key].length === 0) {
-  //         setError(key, {
-  //           type: "manual",
-  //         });
-  //       }
-  //     }
-  //   }
-  // };
-
-  // const handleReset = () => {
-  //   reset({
-  //     username: data.username,
-  //     lastName: data.fullName.split(" ")[1],
-  //     firstName: data.fullName.split(" ")[0],
-  //   });
-  // };
-
-  // const handleSuspendedClick = () => {
-  //   return MySwal.fire({
-  //     title: "Are you sure?",
-  //     text: "You won't be able to revert user!",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonText: "Yes, Suspend user!",
-  //     customClass: {
-  //       confirmButton: "btn btn-primary",
-  //       cancelButton: "btn btn-outline-danger ms-1",
-  //     },
-  //     buttonsStyling: false,
-  //   }).then(function (result) {
-  //     if (result.value) {
-  //       MySwal.fire({
-  //         icon: "success",
-  //         title: "Suspended!",
-  //         text: "User has been suspended.",
-  //         customClass: {
-  //           confirmButton: "btn btn-success",
-  //         },
-  //       });
-  //     } else if (result.dismiss === MySwal.DismissReason.cancel) {
-  //       MySwal.fire({
-  //         title: "Cancelled",
-  //         text: "Cancelled Suspension :)",
-  //         icon: "error",
-  //         customClass: {
-  //           confirmButton: "btn btn-success",
-  //         },
-  //       });
-  //     }
-  //   });
-  // };
+  const handleSuspendedClick = () => {
+    return MySwal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert user!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, Suspend user!",
+      customClass: {
+        confirmButton: "btn btn-primary",
+        cancelButton: "btn btn-outline-danger ms-1",
+      },
+      buttonsStyling: false,
+    }).then(function (result) {
+      if (result.value) {
+        MySwal.fire({
+          icon: "success",
+          title: "Suspended!",
+          text: "User has been suspended.",
+          customClass: {
+            confirmButton: "btn btn-success",
+          },
+        });
+      } else if (result.dismiss === MySwal.DismissReason.cancel) {
+        MySwal.fire({
+          title: "Cancelled",
+          text: "Cancelled Suspension :)",
+          icon: "error",
+          customClass: {
+            confirmButton: "btn btn-success",
+          },
+        });
+      }
+    });
+  };
 
   return (
     <Fragment>
@@ -186,13 +110,16 @@ const UserInfoCard = ({ data }) => {
         <CardBody>
           <div className="user-avatar-section">
             <div className="d-flex align-items-center flex-column">
-              {renderUserImg()}
+              {data.statusOptions}
               <div className="d-flex flex-column align-items-center text-center">
                 <div className="user-info">
-                  <h4>{data !== null ? data.fullName : "Eleanor Aguilar"}</h4>
+                  <h4>{data !== null ? data.levelName : "یه چیزی"}</h4>
                   {data !== null ? (
-                    <Badge color={red} className="text-capitalize">
-                      {data.role}
+                    <Badge
+                      color={roleColors[data.role]}
+                      className="text-capitalize"
+                    >
+                      {data.levelName}
                     </Badge>
                   ) : null}
                 </div>
@@ -205,8 +132,8 @@ const UserInfoCard = ({ data }) => {
                 <Check className="font-medium-2" />
               </Badge>
               <div className="ms-75">
-                <h4 className="mb-0">1.23k</h4>
-                <small>Tasks Done</small>
+                <h4 className="mb-0">1.5 میلیون تومان</h4>
+                <small>قیمت دوره</small>
               </div>
             </div>
             <div className="d-flex align-items-start">
@@ -214,69 +141,80 @@ const UserInfoCard = ({ data }) => {
                 <Briefcase className="font-medium-2" />
               </Badge>
               <div className="ms-75">
-                <h4 className="mb-0">568</h4>
-                <small>Projects Done</small>
+                <p className="mb-0">گروه دوره</p>
               </div>
             </div>
           </div>
-          <h4 className="fw-bolder border-bottom pb-50 mb-1">Details</h4>
+          <h4 className="fw-bolder border-bottom pb-50 mb-1">جزئیات دوره</h4>
           <div className="info-container">
             {data !== null ? (
               <ul className="list-unstyled">
                 <li className="mb-75">
-                  <span className="fw-bolder me-25">Username:</span>
-                  <span>{data.username}</span>
+                  <span className="fw-bolder me-25">نام دوره :</span>
+                  <span>{data.levelName}</span>
                 </li>
                 <li className="mb-75">
-                  <span className="fw-bolder me-25">Billing Email:</span>
-                  <span>{data.email}</span>
+                  <span className="fw-bolder me-25">نام استاد :</span>
+                  <span>{data.levelName}</span>
                 </li>
                 <li className="mb-75">
-                  <span className="fw-bolder me-25">Status:</span>
+                  <span className="fw-bolder me-25">وضعیت برگذاری:</span>
                   <Badge
                     className="text-capitalize"
                     color={statusColors[data.status]}
                   >
-                    {data.status}
+                    {data.levelName}
                   </Badge>
                 </li>
                 <li className="mb-75">
-                  <span className="fw-bolder me-25">Role:</span>
-                  <span className="text-capitalize">{data.role}</span>
+                  <span className="fw-bolder me-25">نام کلاس :</span>
+                  <span className="text-capitalize">{data.levelName}</span>
                 </li>
                 <li className="mb-75">
-                  <span className="fw-bolder me-25">Tax ID:</span>
+                  <span className="fw-bolder me-25">نحوه برگذاری :</span>
                   <span>
-                    Tax-
-                    {data.contact.substr(data.contact.length - 4)}
+                    {/* Tax-
+                    {data.contact.substr(data.contact.length - 4)} */}
+                    {data.levelName}
                   </span>
                 </li>
                 <li className="mb-75">
-                  <span className="fw-bolder me-25">Contact:</span>
-                  <span>{data.contact}</span>
+                  <span className="fw-bolder me-25">سطح دوره :</span>
+                  <span>{data.levelName}</span>
                 </li>
                 <li className="mb-75">
-                  <span className="fw-bolder me-25">Language:</span>
-                  <span>English</span>
-                </li>
-                <li className="mb-75">
-                  <span className="fw-bolder me-25">Country:</span>
-                  <span>England</span>
+                  <span className="fw-bolder me-25">تکنولوژی های دوره :</span>
+                  <div style={{ display: "flex", gap: "6px" }}>
+                    <Badge className="text-capitalize" color="info">
+                      {data.levelName}
+                    </Badge>
+                    <Badge className="text-capitalize" color="info">
+                      {data.levelName}
+                    </Badge>
+                  </div>
                 </li>
               </ul>
             ) : null}
           </div>
           <div className="d-flex justify-content-center pt-2">
             <Button color="primary" onClick={() => setShow(true)}>
-              Edit
+              ویرایش دوره
+            </Button>
+            <Button
+              className="ms-1"
+              color="warning"
+              outline
+              onClick={handleSuspendedClick}
+            >
+              غیرفعال کردن دوره
             </Button>
             <Button
               className="ms-1"
               color="danger"
               outline
-              // onClick={handleSuspendedClick}
+              onClick={handleSuspendedClick}
             >
-              Suspended
+              حذف دوره
             </Button>
           </div>
         </CardBody>
@@ -295,7 +233,7 @@ const UserInfoCard = ({ data }) => {
             <h1 className="mb-1">Edit User Information</h1>
             <p>Updating user details will receive a privacy audit.</p>
           </div>
-          <Form onSubmit={handleSubmit(onSubmit)}>
+          <Form>
             <Row className="gy-1 pt-75">
               <Col md={6} xs={12}>
                 <Label className="form-label" for="firstName">
@@ -378,9 +316,7 @@ const UserInfoCard = ({ data }) => {
                   theme={selectThemeColors}
                   defaultValue={
                     statusOptions[
-                      statusOptions.findIndex(
-                        (i) => i.value === data.status
-                      )
+                      statusOptions.findIndex((i) => i.value === data.status)
                     ]
                   }
                 />
@@ -392,9 +328,7 @@ const UserInfoCard = ({ data }) => {
                 <Input
                   id="tax-id"
                   placeholder="Tax-1234"
-                  defaultValue={data.contact.substr(
-                    data.contact.length - 4
-                  )}
+                  // defaultValue={data.contact.substr(data.contact.length - 4)}
                 />
               </Col>
               <Col md={6} xs={12}>

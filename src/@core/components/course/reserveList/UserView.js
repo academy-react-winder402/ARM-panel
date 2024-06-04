@@ -8,8 +8,9 @@ import { useParams, Link, Await } from "react-router-dom";
 // import { useSelector, useDispatch } from "react-redux";
 
 // ** Reactstrap Imports
-import { Row, Col, Alert } from "reactstrap";
+import { Row, Col } from "reactstrap";
 import UserInfoCard from "./UserInfoCard";
+import UserTabs from "./UserTabs";
 
 // ** Styles
 import "@styles/react/apps/app-users.scss";
@@ -17,6 +18,13 @@ import axios from "axios";
 
 const UserView = () => {
   const [data, setData] = useState({});
+  const [active, setActive] = useState("1");
+
+  const toggleTab = (tab) => {
+    if (active !== tab) {
+      setActive(tab);
+    }
+  };
 
   const fetch = async () => {
     const fetchData = await axios.get(
@@ -40,7 +48,7 @@ const UserView = () => {
   // const dispatch = useDispatch();
 
   // ** Hooks
-  const { id } = useParams();
+  // const { id } = useParams();
 
   // ** Get suer on mount
   // useEffect(() => {
@@ -51,7 +59,10 @@ const UserView = () => {
     <div className="app-user-view">
       <Row>
         <Col xl="4" lg="5" xs={{ order: 1 }} md={{ order: 0, size: 5 }}>
-          {/* <UserInfoCard data={data.classRoomName} /> */}
+          <UserInfoCard data={data} />
+        </Col>
+        <Col xl="8" lg="7" xs={{ order: 0 }} md={{ order: 1, size: 7 }}>
+          <UserTabs active={active} toggleTab={toggleTab} data={data} />
         </Col>
       </Row>
     </div>
