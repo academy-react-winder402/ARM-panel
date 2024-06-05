@@ -62,7 +62,7 @@ const BreadCrumbs = (props) => {
                   <Link to="/">داشبورد</Link>
                 </BreadcrumbItem>
                 <BreadcrumbItem tag="li">
-                  <Link to="/">دوره ها</Link>
+                  <Link to="/listOfCourse">دوره ها</Link>
                 </BreadcrumbItem>
                 <BreadcrumbItem tag="li">
                   <Link to="/">اضافه کردن دوره ها </Link>
